@@ -22,6 +22,7 @@
 
    /* 🌈 Gradiente */
    --gradient-primary: linear-gradient(135deg, #7b1e3a, #ff2f6d);
+   --ease-ui: cubic-bezier(.4, 0, .2, 1);
 }
 
 /* =====================================================
@@ -178,6 +179,7 @@ body {
 }
 
 .form-client__input {
+   caret-color: var(--color-neon);
    background: transparent;
    border: 1px solid var(--color-text-muted);
    border-radius: 8px;
@@ -186,9 +188,9 @@ body {
    color: var(--color-text-main);
 
    transition:
-      border-color 0.3s ease,
-      box-shadow 0.3s ease,
-      transform 0.2s ease;
+      border-color 0.3s var(--ease-ui),
+      box-shadow 0.3s var(--ease-ui),
+      transform 0.2s var(--ease-ui);
 }
 
 .form-client__input::placeholder {
@@ -206,7 +208,6 @@ body {
    box-shadow:
       0 0 0 1px rgba(255, 47, 109, 0.35),
       0 0 12px rgba(255, 47, 109, 0.15);
-   transform: none;
 }
 
 /* ===============================
@@ -229,6 +230,16 @@ body {
 /* =====================================================
    8️⃣ ACCIONES / BOTONES
 ===================================================== */
+#btnGuardar:disabled {
+   opacity: 0.4;
+   cursor: not-allowed;
+   filter: grayscale(1);
+}
+
+#btnGuardar {
+   transition: all 0.3s var(--ease-ui);
+}
+
 .form-actions {
    margin-top: 0.8rem;
 }
@@ -252,9 +263,9 @@ body {
    cursor: pointer;
 
    transition:
-      background 0.3s ease,
-      box-shadow 0.3s ease,
-      transform 0.2s ease;
+      background 0.3s var(--ease-ui),
+      box-shadow 0.3s var(--ease-ui),
+      transform 0.2s var(--ease-ui);
 }
 
 .form-client__button:hover {
@@ -269,11 +280,13 @@ body {
 
 .form-client__button--primary:hover {
    box-shadow: 0 0 20px var(--color-neon);
+   transform: translateY(-2px) scale(1.01);
 }
 
 .form-client__button:not(.form-client__button--primary):hover {
    border-color: var(--color-neon);
    color: var(--color-neon);
+   background: rgba(255, 255, 255, 0.04);
 }
 
 /* ===============================
@@ -325,6 +338,7 @@ body {
 
 .form-client__button.is-loading::before {
    content: "Guardando...";
+   color: transparent;
    position: absolute;
    inset: 0;
    display: flex;
@@ -414,6 +428,7 @@ body {
    color: var(--color-text-main);
    padding: 0.7rem 0.9rem;
    white-space: nowrap;
+   transition: background 0.25s ease;
 }
 
 /* Bordes redondeados por fila */
@@ -439,7 +454,7 @@ body {
 }
 
 .clients__tbody tr:hover td + td {
-   border-left-color: rgba(255, 47, 109, 0.25);
+   border-left-color: rgba(255, 47, 109, 0.18);
 }
 
 /* ===============================
@@ -447,7 +462,7 @@ body {
 ================================ */
 
 .clients__tbody tr:hover td {
-   color: #ffffff;
+   background: rgba(255, 255, 255, 0.02);
 }
 
 /* =====================================================
