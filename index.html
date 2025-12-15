@@ -1,35 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+   <!-- =========================
+        CONFIGURACIÓN BÁSICA
+   ========================== -->
+
+   <!-- Codificación de caracteres (acentos, ñ, etc.) -->
    <meta charset="UTF-8">
+
+   <!-- Responsive: adapta el diseño a móviles y tablets -->
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- Hoja de estilos principal -->
    <link rel="stylesheet" href="./css/styles.css">
+
+   <!-- Carga de la fuente Inter desde Google Fonts -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+   <!-- Título que aparece en la pestaña del navegador -->
    <title>Registro Clientes</title>
 </head>
 
 <body>
 
-   <!-- Header -->
+   <!-- =========================
+        HEADER (ENCABEZADO)
+   ========================== -->
    <header class="header">
+      <!-- Título principal de la aplicación -->
       <h1 class="header__title">Registro de Clientes</h1>
    </header>
 
-   <!-- Main -->
+   <!-- =========================
+        CONTENIDO PRINCIPAL
+   ========================== -->
    <main class="main">
 
-      <!-- Sección Formulario -->
+      <!-- =========================
+           SECCIÓN FORMULARIO
+      ========================== -->
       <section class="form-section">
+
+         <!-- Título del formulario -->
          <h2 class="form-section__title">Registro del Cliente</h2>
 
+         <!-- Formulario principal -->
+         <!-- El id se usa en JavaScript para validar y enviar datos -->
          <form id="form-client" class="form-client">
 
+            <!-- Agrupa los campos del formulario -->
             <fieldset class="form-client__fieldset">
                <legend class="form-client__legend">Datos del Cliente</legend>
 
+               <!-- ===== Campo: Nombre ===== -->
                <div class="form-client__group">
                   <label for="nombre" class="form-client__label">Nombre</label>
                   <input
@@ -40,9 +65,11 @@
                      required
                      minlength="3"
                      placeholder="José">
+                  <!-- Contenedor para mostrar errores -->
                   <div class="form-client__error" id="error-nombre"></div>
                </div>
 
+               <!-- ===== Campo: Apellido Paterno ===== -->
                <div class="form-client__group">
                   <label for="apellido-paterno" class="form-client__label">Apellido Paterno</label>
                   <input
@@ -55,6 +82,7 @@
                   <div class="form-client__error" id="error-apellido-paterno"></div>
                </div>
 
+               <!-- ===== Campo: Apellido Materno ===== -->
                <div class="form-client__group">
                   <label for="apellido-materno" class="form-client__label">Apellido Materno</label>
                   <input
@@ -67,6 +95,7 @@
                   <div class="form-client__error" id="error-apellido-materno"></div>
                </div>
 
+               <!-- ===== Campo: Email ===== -->
                <div class="form-client__group">
                   <label for="email" class="form-client__label">Email</label>
                   <input
@@ -79,6 +108,7 @@
                   <div class="form-client__error" id="error-email"></div>
                </div>
 
+               <!-- ===== Campo: Teléfono ===== -->
                <div class="form-client__group">
                   <label for="telefono" class="form-client__label">Teléfono</label>
                   <input
@@ -91,6 +121,7 @@
                   <div class="form-client__error" id="error-telefono"></div>
                </div>
 
+               <!-- ===== Campo: Dirección ===== -->
                <div class="form-client__group">
                   <label for="direccion" class="form-client__label">Dirección</label>
                   <input
@@ -103,6 +134,7 @@
                   <div class="form-client__error" id="error-direccion"></div>
                </div>
 
+               <!-- ===== Campo: Producto ===== -->
                <div class="form-client__group">
                   <label for="producto" class="form-client__label">Producto</label>
                   <input
@@ -114,15 +146,21 @@
                      placeholder="Laptop">
                   <div class="form-client__error" id="error-producto"></div>
                </div>
-               <small class="form-client__note">*Campos obligatorios*</small>
 
+               <!-- Nota informativa -->
+               <small class="form-client__note">*Campos obligatorios*</small>
             </fieldset>
 
-            <!-- Acciones -->
+            <!-- =========================
+                 BOTONES DE ACCIÓN
+            ========================== -->
             <div class="form-actions">
                <div class="form-actions__card">
 
                   <div class="form-client__actions">
+
+                     <!-- Botón para registrar un cliente -->
+                     <!-- Inicia deshabilitado hasta que el formulario sea válido -->
                      <button 
                         type="submit" 
                         id="btnGuardar" 
@@ -131,6 +169,7 @@
                         Registrar
                      </button>
 
+                     <!-- Limpia el formulario -->
                      <button 
                         type="reset" 
                         id="btnLimpiar" 
@@ -138,81 +177,79 @@
                         Limpiar
                      </button>
 
+                     <!-- Botón usado cuando se edita un cliente existente -->
                      <button 
-                        type="button" 
-                        id="btnEliminar" 
-                        class="form-client__button form-client__button--danger">
-                        Eliminar
-                     </button>
-
-                     <button 
-                        type="button" 
-                        id="btnModificar" 
-                        class="form-client__button form-client__button--warning">
-                        Editar
+                        type="button"
+                        id="btnActualizar"
+                        class="form-client__button">
+                        Actualizar
                      </button>
                   </div>
 
+                  <!-- Mensajes de éxito o error -->
                   <div class="form-client__message" id="formMessage"></div>
 
-                  </div>
                </div>
+            </div>
 
          </form>
       </section>
 
-      <!-- Sección Tabla -->
+      <!-- =========================
+           SECCIÓN TABLA DE CLIENTES
+      ========================== -->
       <section class="clients">
 
          <h2 class="clients__title">Clientes Registrados</h2>
 
          <div class="clients__card">
             <div class="clients__table-wrapper">
-               <table class="clients__table">
 
-            <caption class="clients__caption">
-               Lista completa de clientes con detalles de contacto y producto.
-            </caption>
+               <!-- Tabla donde JS inserta los clientes -->
+               <table class="clients__table" id="tabla-clientes">
 
-               <thead class="clients__thead">
-                  <tr>
-                     <th data-col="id">#</th>
-                     <th data-col="nombre">Nombre</th>
-                     <th data-col="apellido_paterno">Apellido Paterno</th>
-                     <th data-col="apellido_materno">Apellido Materno</th>
-                     <th data-col="email">Email</th>
-                     <th data-col="telefono">Teléfono</th>
-                     <th data-col="direccion">Dirección</th>
-                     <th data-col="producto">Producto</th>
-                     <th data-col="fecha">Fecha</th>
-                  </tr>
-               </thead>
+                  <caption class="clients__caption">
+                     Lista completa de clientes con detalles de contacto y producto.
+                  </caption>
 
-               <tbody class="clients__tbody">
-                  <tr>
-                     <td>1</td>
-                  <td>EJE</td>
-                  <td>EJE</td>
-                  <td>EJE</td>
-                  <td>EJE</td>
-                  <td>EJE</td>
-                  <td>EJE</td>
-                  <td>EJE</td>
-                  <td>EJE</td>
-                  </tr>
-               </tbody>
+                  <!-- Encabezados de la tabla -->
+                  <thead class="clients__thead">
+                     <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                        <th>Producto</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                     </tr>
+                  </thead>
 
-            </table>
+                  <!-- El cuerpo se llena dinámicamente con JavaScript -->
+                  <tbody class="clients__tbody">
+                  </tbody>
+
+               </table>
+
             </div>
-
          </div>
 
       </section>
 
    </main>
 
-   <!-- tu HTML -->
-   <script src="js/main.js"></script>
+   <!-- =========================
+        SCRIPTS
+   ========================== -->
+
+   <!-- Validaciones del formulario -->
+   <script type="module" src="js/validaciones.js"></script>
+
+   <!-- Lógica de UI (tabla, editar, eliminar, recargar) -->
+   <script type="module" src="js/ui.js"></script>
 
 </body>
 </html>

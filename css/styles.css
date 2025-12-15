@@ -251,6 +251,31 @@ body {
    flex-wrap: wrap;
 }
 
+/* ===============================
+   ACCIONES EN TABLA (FIX UI)
+================================ */
+
+.clients__actions {
+   white-space: normal; /* 🔥 clave */
+   text-align: center;
+   min-width: 130px;
+}
+
+.clients__actions-wrapper {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 0.4rem;
+   flex-wrap: wrap; /* 🔥 evita romper la tabla */
+}
+
+.clients__actions-wrapper .form-client__button {
+   padding: 0.35rem 0.7rem;
+   font-size: 0.75rem;
+   border-radius: 8px;
+}
+
+
 .form-client__button {
    position: relative;
    overflow: hidden;
